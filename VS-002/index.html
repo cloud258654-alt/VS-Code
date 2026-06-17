@@ -119,6 +119,196 @@
       80% { opacity: 0.55; transform: translate(3px, -6px); }
     }
 
+    /* 科技感斜角網格 */
+    .tech-grid {
+      position: absolute; inset: 0; z-index: 0;
+      background-image:
+        linear-gradient(45deg, rgba(99,226,255,0.04) 1px, transparent 1px),
+        linear-gradient(-45deg, rgba(176,102,255,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+
+    /* CRT 橫向掃描條紋 */
+    .scanlines {
+      position: absolute; inset: 0; z-index: 1;
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.03) 2px,
+        rgba(0,0,0,0.03) 4px
+      );
+      pointer-events: none;
+    }
+
+    /* 散景光點 — 失焦大光圈 */
+    .bokeh {
+      position: absolute; border-radius: 50%;
+      filter: blur(60px);
+      pointer-events: none; z-index: 0;
+      animation: bokehFloat 8s ease-in-out infinite alternate;
+    }
+    .bokeh.b1 {
+      width: 180px; height: 180px;
+      top: 15%; left: 55%;
+      background: radial-gradient(circle, rgba(176,102,255,0.25), transparent);
+    }
+    .bokeh.b2 {
+      width: 140px; height: 140px;
+      top: 60%; left: 72%;
+      background: radial-gradient(circle, rgba(99,226,255,0.2), transparent);
+      animation-delay: -3s;
+    }
+    .bokeh.b3 {
+      width: 200px; height: 200px;
+      top: 35%; left: 20%;
+      background: radial-gradient(circle, rgba(80,100,200,0.15), transparent);
+      animation-delay: -5s;
+    }
+    .bokeh.b4 {
+      width: 120px; height: 120px;
+      top: 75%; left: 48%;
+      background: radial-gradient(circle, rgba(176,102,255,0.18), transparent);
+      animation-delay: -2s;
+    }
+
+    @keyframes bokehFloat {
+      0% { opacity: 0.5; transform: translate(0, 0); }
+      100% { opacity: 0.9; transform: translate(10px, -15px); }
+    }
+
+    /* 深空視差粒子層 — 反向慢速漂移 */
+    .particles-deep {
+      position: absolute; inset: 0; z-index: 0;
+      background-image:
+        radial-gradient(1px 1px at 30% 40%, rgba(255,255,255,0.3), transparent),
+        radial-gradient(1px 1px at 60% 20%, rgba(176,102,255,0.25), transparent),
+        radial-gradient(1.5px 1.5px at 80% 60%, rgba(99,226,255,0.2), transparent),
+        radial-gradient(1px 1px at 15% 70%, rgba(255,255,255,0.2), transparent),
+        radial-gradient(1px 1px at 45% 80%, rgba(99,226,255,0.15), transparent),
+        radial-gradient(1.5px 1.5px at 90% 15%, rgba(255,255,255,0.2), transparent);
+      background-size: 300px 300px;
+      animation: deepStarfield 30s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes deepStarfield {
+      0% { transform: translate(0, 0); opacity: 0.5; }
+      50% { transform: translate(5px, -8px); opacity: 0.8; }
+      100% { transform: translate(0, 0); opacity: 0.5; }
+    }
+
+    /* 水平天際線 */
+    .horizon-line {
+      position: absolute; top: 50%; left: 0; width: 100%; height: 1px;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(99,226,255,0.15) 15%,
+        rgba(176,102,255,0.25) 35%,
+        rgba(99,226,255,0.3) 55%,
+        rgba(176,102,255,0.15) 75%,
+        transparent 100%);
+      box-shadow: 0 0 40px rgba(99,226,255,0.1), 0 0 80px rgba(176,102,255,0.06);
+      z-index: 0; pointer-events: none;
+      opacity: 0.6;
+      animation: horizonBreathe 6s ease-in-out infinite;
+    }
+
+    @keyframes horizonBreathe {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 0.8; }
+    }
+
+    /* 脈衝擴散環 — 從圓環中心擴散 */
+    .data-rings {
+      position: absolute;
+      right: 20%; top: 40%;
+      transform: translateY(-50%);
+      width: 520px; height: 520px;
+      z-index: 1; pointer-events: none;
+      display: flex; justify-content: center; align-items: center;
+    }
+    .dr {
+      position: absolute; border-radius: 50%;
+      border: 1px solid rgba(99,226,255,0.3);
+      box-shadow: 0 0 10px rgba(99,226,255,0.1), inset 0 0 10px rgba(99,226,255,0.05);
+      animation: ringExpand 4s ease-out infinite;
+      opacity: 0;
+    }
+    .dr1 { width: 100px; height: 100px; }
+    .dr2 { width: 100px; height: 100px; animation-delay: 1.3s; }
+    .dr3 { width: 100px; height: 100px; animation-delay: 2.6s; }
+
+    @keyframes ringExpand {
+      0% { opacity: 0.6; transform: scale(1); }
+      100% { opacity: 0; transform: scale(5); }
+    }
+
+    /* 浮游幾何碎片 */
+    .geo-frag {
+      position: absolute; z-index: 0; pointer-events: none;
+      clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+      animation: fragDrift 20s ease-in-out infinite;
+    }
+    .geo-frag.g1 {
+      width: 30px; height: 30px;
+      top: 20%; left: 10%;
+      background: rgba(99,226,255,0.06);
+      border: 1px solid rgba(99,226,255,0.15);
+      animation-delay: 0s;
+    }
+    .geo-frag.g2 {
+      width: 20px; height: 20px;
+      top: 55%; left: 5%;
+      background: rgba(176,102,255,0.06);
+      border: 1px solid rgba(176,102,255,0.12);
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      animation-delay: -5s;
+    }
+    .geo-frag.g3 {
+      width: 24px; height: 24px;
+      top: 70%; left: 80%;
+      background: rgba(99,226,255,0.05);
+      border: 1px solid rgba(99,226,255,0.1);
+      clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+      animation-delay: -10s;
+    }
+    .geo-frag.g4 {
+      width: 16px; height: 16px;
+      top: 15%; left: 85%;
+      background: rgba(176,102,255,0.06);
+      border: 1px solid rgba(176,102,255,0.1);
+      animation-delay: -15s;
+    }
+    .geo-frag.g5 {
+      width: 28px; height: 28px;
+      top: 40%; left: 45%;
+      background: rgba(99,226,255,0.04);
+      border: 1px solid rgba(99,226,255,0.08);
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      animation-delay: -8s;
+    }
+
+    @keyframes fragDrift {
+      0%   { transform: translate(0, 0) rotate(0deg); opacity: 0.3; }
+      25%  { transform: translate(15px, -20px) rotate(90deg); opacity: 0.7; }
+      50%  { transform: translate(-10px, -35px) rotate(180deg); opacity: 0.4; }
+      75%  { transform: translate(-20px, -10px) rotate(270deg); opacity: 0.6; }
+      100% { transform: translate(0, 0) rotate(360deg); opacity: 0.3; }
+    }
+
+    /* 底部霧氣層 */
+    .fog-layer {
+      position: absolute; bottom: 0; left: 0; width: 100%; height: 40vh;
+      background: linear-gradient(to top,
+        rgba(3,3,12,0.7) 0%,
+        rgba(10,10,30,0.3) 40%,
+        rgba(20,15,40,0.08) 70%,
+        transparent 100%);
+      z-index: 0; pointer-events: none;
+    }
+
     /* ==========================================
        3. 地板系統 — 透視網格、掃描線、光池倒影
        ========================================== */
@@ -164,16 +354,17 @@
     .floor-reflection {
       position: absolute; inset: 0;
       background-image:
-        radial-gradient(ellipse 350px 180px at 68% 25%, rgba(176,102,255,0.5) 0%, rgba(99,226,255,0.25) 40%, transparent 70%),
-        linear-gradient(to right, transparent 63%, rgba(255,255,255,0.35) 64%, rgba(99,226,255,0.6) 64.5%, transparent 66%);
+        radial-gradient(ellipse 420px 220px at 68% 22%, rgba(176,102,255,0.7) 0%, rgba(99,226,255,0.4) 35%, transparent 65%),
+        radial-gradient(ellipse 500px 300px at 68% 30%, rgba(99,226,255,0.15) 0%, transparent 55%),
+        linear-gradient(to right, transparent 60%, rgba(255,255,255,0.4) 63%, rgba(99,226,255,0.7) 64%, transparent 67%);
       mix-blend-mode: screen;
-      opacity: 0.75;
+      opacity: 0.85;
       animation: reflectionPulse 4s ease-in-out infinite alternate;
     }
 
     @keyframes reflectionPulse {
-      0% { opacity: 0.55; transform: scale(0.97); }
-      100% { opacity: 0.85; transform: scale(1.03); }
+      0% { opacity: 0.65; transform: scale(0.97); }
+      100% { opacity: 0.95; transform: scale(1.04); }
     }
 
     /* ==========================================
@@ -192,12 +383,30 @@
       z-index: 1;
     }
 
+    /* 左上往右下斜射耶蘇光 */
+    .god-ray {
+      position: absolute;
+      top: -30%; left: -20%;
+      width: 60%; height: 200%;
+      background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.12) 0%,
+        rgba(176,102,255,0.08) 30%,
+        rgba(99,226,255,0.05) 55%,
+        transparent 80%
+      );
+      filter: blur(30px);
+      opacity: 0.5;
+      z-index: 0;
+      pointer-events: none;
+    }
+
     /* ==========================================
        5. 霓虹圓環系統 — 環境光暈 + 雙層環 + 軌道動畫
        ========================================== */
     .ring-wrapper {
       position: absolute;
-      right: 20%; top: 45%;
+      right: 20%; top: 40%;
       transform: translateY(-50%);
       width: 520px; height: 520px;
       z-index: 2;
@@ -270,6 +479,106 @@
     @keyframes pulseIntensity {
       0% { opacity: 0.8; transform: scale(0.97) rotate(var(--r, 0deg)); }
       100% { opacity: 1; transform: scale(1.05) rotate(var(--r, 0deg)); }
+    }
+
+    /* 軌道衛星 — 環繞光點 */
+    .satellite {
+      position: absolute; border-radius: 50%;
+      box-shadow: 0 0 8px var(--neon-cyan), 0 0 20px var(--neon-cyan), 0 0 40px var(--neon-purple);
+      pointer-events: none;
+    }
+    .satellite.s1 {
+      width: 8px; height: 8px; background: #fff;
+      animation: orbit1 6s linear infinite;
+    }
+    .satellite.s2 {
+      width: 5px; height: 5px; background: var(--neon-cyan);
+      animation: orbit2 9s linear infinite;
+    }
+    .satellite.s3 {
+      width: 6px; height: 6px; background: var(--neon-purple);
+      animation: orbit3 7.5s linear infinite;
+    }
+    .satellite.s4 {
+      width: 4px; height: 4px; background: #fff;
+      animation: orbit4 11s linear infinite;
+    }
+
+    /* 衛星軌道 — 各自獨立半徑與速度 */
+    @keyframes orbit1 {
+      0% { transform: rotate(0deg) translateX(200px) rotate(0deg); }
+      100% { transform: rotate(360deg) translateX(200px) rotate(-360deg); }
+    }
+    @keyframes orbit2 {
+      0% { transform: rotate(120deg) translateX(170px) rotate(-120deg); }
+      100% { transform: rotate(480deg) translateX(170px) rotate(-480deg); }
+    }
+    @keyframes orbit3 {
+      0% { transform: rotate(240deg) translateX(220px) rotate(-240deg); }
+      100% { transform: rotate(-120deg) translateX(220px) rotate(120deg); }
+    }
+    @keyframes orbit4 {
+      0% { transform: rotate(60deg) translateX(185px) rotate(-60deg); }
+      100% { transform: rotate(420deg) translateX(185px) rotate(-420deg); }
+    }
+
+    /* 圓環中心幾何核心 — 旋轉六角 */
+    .hex-core {
+      position: absolute;
+      width: 50px; height: 50px;
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      background: linear-gradient(135deg, rgba(99,226,255,0.6), rgba(176,102,255,0.3));
+      box-shadow:
+        0 0 15px rgba(99,226,255,0.5),
+        0 0 35px rgba(176,102,255,0.25),
+        inset 0 0 10px rgba(255,255,255,0.3);
+      animation: hexRotate 12s linear infinite;
+      z-index: 5;
+    }
+
+    .hex-core::after {
+      content: '';
+      position: absolute; inset: 6px;
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      border: 1px solid rgba(255,255,255,0.4);
+      animation: hexRotate 12s linear infinite reverse;
+    }
+
+    @keyframes hexRotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* 滑鼠靠近圓環 — 增亮效果 */
+    .ring-wrapper.proximity .ring-ambient-glow {
+      opacity: 1;
+      transform: scale(1.15);
+      filter: blur(40px);
+      transition: transform 0.4s ease, filter 0.4s ease;
+    }
+    .ring-wrapper.proximity .neon-ring {
+      border-color: rgba(255,255,255,0.8);
+      border-top-color: rgba(150,240,255,1);
+      border-left-color: rgba(200,140,255,1);
+      border-bottom-color: rgba(150,240,255,1);
+      box-shadow:
+        0 0 70px rgba(255,255,255,0.9),
+        inset 0 0 70px rgba(255,255,255,0.9),
+        0 0 160px var(--neon-cyan),
+        inset 0 0 160px var(--neon-cyan),
+        0 0 320px var(--neon-purple),
+        inset 0 0 320px var(--neon-purple);
+      filter: blur(1.2px);
+      animation-duration: 5s;
+    }
+    .ring-wrapper.proximity .neon-ring-inner {
+      box-shadow:
+        0 0 45px rgba(255,255,255,1),
+        inset 0 0 45px rgba(255,255,255,1),
+        0 0 110px var(--neon-cyan),
+        inset 0 0 110px var(--neon-cyan),
+        0 0 210px var(--neon-purple);
+      animation-duration: 8s;
     }
 
     /* ==========================================
@@ -421,6 +730,10 @@
     .main-title {
       font-size: 62px; font-weight: 600; line-height: 1.08;
       letter-spacing: -1px; margin-bottom: 4px;
+      color: #fff;
+      text-shadow:
+        0 0 15px rgba(255,255,255,0.3),
+        0 0 40px rgba(176,102,255,0.15);
     }
 
     .main-title .highlight {
@@ -446,6 +759,7 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      filter: drop-shadow(0 0 12px rgba(99,226,255,0.3)) drop-shadow(0 0 30px rgba(176,102,255,0.15));
     }
 
     .description {
@@ -633,7 +947,7 @@
        ========================================== */
     .footer {
       position: absolute; bottom: 0; left: 0; width: 100%;
-      padding: 40px 60px;
+      padding: 40px 60px 50px;
       display: flex; justify-content: space-between; align-items: flex-end;
       z-index: 10;
       font-family: var(--font-tech);
@@ -665,6 +979,61 @@
     .tags {
       display: flex; flex-direction: column; align-items: flex-end;
       gap: 8px; color: var(--text-dim); font-size: 9px;
+    }
+
+    /* ==========================================
+       11b. HUD 系統狀態列
+       ========================================== */
+    .hud-bar {
+      position: absolute; bottom: 0; left: 0; width: 100%;
+      padding: 8px 60px 10px;
+      display: flex; align-items: center; gap: 14px;
+      z-index: 9;
+      font-family: var(--font-tech);
+      font-size: 9px; letter-spacing: 1.5px;
+      color: var(--text-dim);
+      border-top: 1px solid rgba(255,255,255,0.04);
+      background: linear-gradient(to top, rgba(3,3,12,0.5), transparent);
+    }
+    .hud-bar .hud-metric { display: flex; align-items: center; gap: 6px; }
+    .hud-bar .hud-metric i {
+      font-style: normal;
+      color: var(--neon-cyan);
+      text-shadow: 0 0 6px rgba(99,226,255,0.4);
+      animation: metricPulse 3s ease-in-out infinite;
+    }
+    .hud-bar .hud-metric:nth-child(3) i { color: var(--neon-green); text-shadow: 0 0 6px rgba(94,255,177,0.4); }
+    .hud-bar .hud-metric:nth-child(5) i { color: var(--neon-purple); text-shadow: 0 0 6px rgba(176,102,255,0.4); }
+    .hud-sep { color: rgba(255,255,255,0.08); }
+    .hud-clock { margin-left: auto; color: var(--neon-cyan); opacity: 0.7; }
+
+    @keyframes metricPulse {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 1; }
+    }
+
+    /* ==========================================
+       11c. 左側數據流標線
+       ========================================== */
+    .data-stream-left {
+      position: absolute; left: 28px; top: 0;
+      width: 1px; height: 100%;
+      z-index: 4; pointer-events: none;
+    }
+    .ds-line {
+      position: absolute;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(99,226,255,0.4), rgba(176,102,255,0.3), transparent);
+      opacity: 0.35;
+      animation: dsDrift 12s ease-in-out infinite;
+    }
+    .ds-l1 { left: 0; top: 10%; height: 100px; animation-delay: 0s; }
+    .ds-l2 { left: 6px; top: 40%; height: 140px; animation-delay: -4s; }
+    .ds-l3 { left: 12px; top: 65%; height: 90px; animation-delay: -8s; }
+
+    @keyframes dsDrift {
+      0%, 100% { opacity: 0.25; transform: translateY(0); }
+      50% { opacity: 0.6; transform: translateY(-8px); }
     }
 
     /* ==========================================
@@ -776,6 +1145,7 @@
 
     @media (max-width: 1024px) {
       .sidebar-left, .status-panel, .corner-decor { display: none; }
+      .satellite, .tech-grid, .hex-core, .bokeh, .data-stream-left, .god-ray, .data-rings, .geo-frag { display: none; }
       .main-content { left: 8%; right: 8%; max-width: none; top: 25%; }
       .main-title { font-size: 40px; }
       .ch-title { font-size: 34px; }
@@ -783,7 +1153,8 @@
       .light-beam { right: 5%; opacity: 0.5; }
       .navbar { padding: 30px 40px; }
       .menu { gap: 30px; }
-      .footer { padding: 30px 40px; }
+      .footer { padding: 30px 40px 40px; }
+      .hud-bar { font-size: 8px; padding: 6px 30px 8px; }
     }
 
     @media (max-width: 640px) {
@@ -804,6 +1175,10 @@
       .hero-sub-eng { justify-content: center; }
       .hero-sub-eng::after { display: none; }
       .category-tag { justify-content: center; }
+      .hud-bar { font-size: 7px; gap: 8px; padding: 6px 16px 8px; }
+      .hud-bar .hud-sep:nth-child(4),
+      .hud-bar .hud-metric:nth-child(5) { display: none; }
+      .viewport-frame { inset: 4px; }
     }
 
     /* 超寬螢幕 — 不讓內容無限拉開 */
@@ -819,27 +1194,189 @@
     .neon-ring,
     .neon-ring-inner,
     .ring-ambient-glow,
-    .light-beam,
+    .satellite,
+    .hex-core,
     .cyber-floor,
     .bar {
       will-change: transform, opacity;
+    }
+
+    /* ==========================================
+       16. 頁面進場動畫
+       ========================================== */
+    @keyframes fadeRise {
+      from { opacity: 0; transform: translateY(24px); filter: blur(4px); }
+      to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
+    }
+
+    .navbar,
+    .sidebar-left,
+    .category-tag,
+    .hero-sub-eng,
+    .main-title,
+    .ch-title,
+    .description,
+    .action-group,
+    .status-panel,
+    .corner-decor,
+    .footer,
+    .hud-bar,
+    .ring-wrapper {
+      animation: fadeRise 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+    }
+
+    .navbar          { animation-delay: 0.1s; }
+    .sidebar-left    { animation-delay: 0.15s; }
+    .ring-wrapper    { animation-delay: 0.2s; }
+    .corner-decor    { animation-delay: 0.25s; }
+    .status-panel    { animation-delay: 0.3s; }
+    .category-tag    { animation-delay: 0.35s; }
+    .hero-sub-eng    { animation-delay: 0.4s; }
+    .main-title      { animation-delay: 0.45s; }
+    .ch-title        { animation-delay: 0.5s; }
+    .description     { animation-delay: 0.55s; }
+    .action-group    { animation-delay: 0.6s; }
+    .footer          { animation-delay: 0.65s; }
+    .hud-bar         { animation-delay: 0.7s; }
+
+    /* ==========================================
+       17. 六角頂點光點
+       ========================================== */
+    .hex-vert {
+      position: absolute;
+      width: 4px; height: 4px; border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 0 6px var(--neon-cyan), 0 0 14px var(--neon-cyan);
+      animation: vertPulse 2s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+    .hex-vert:nth-child(odd) { animation-delay: 0s; }
+    .hex-vert:nth-child(even) { animation-delay: -1s; }
+
+    @keyframes vertPulse {
+      0% { opacity: 0.5; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1.4); }
+    }
+
+    /* ==========================================
+       18. 按鈕箭頭滑入
+       ========================================== */
+    .cta-btn .btn-arrow {
+      display: inline-block;
+      margin-left: 10px;
+      transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .cta-btn:hover .btn-arrow {
+      transform: translateX(6px);
+    }
+
+    /* ==========================================
+       19. 全螢幕邊框 + 頂部指示線
+       ========================================== */
+    .viewport-frame {
+      position: fixed; inset: 10px; z-index: 200;
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 2px;
+      pointer-events: none;
+    }
+    .viewport-frame::before {
+      content: '';
+      position: fixed; top: 0; left: 0; width: 100%; height: 2px;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        var(--neon-cyan) 20%,
+        var(--neon-purple) 50%,
+        var(--neon-cyan) 80%,
+        transparent 100%);
+      opacity: 0.5;
+      z-index: 201;
+      animation: topLinePulse 3s ease-in-out infinite;
+    }
+
+    @keyframes topLinePulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.7; }
+    }
+
+    /* ==========================================
+       20. 游標軌跡粒子容器
+       ========================================== */
+    .cursor-trails {
+      position: fixed; inset: 0; z-index: 300;
+      pointer-events: none;
+    }
+    .cursor-dot {
+      position: absolute;
+      width: 4px; height: 4px; border-radius: 50%;
+      background: var(--neon-cyan);
+      box-shadow: 0 0 6px var(--neon-cyan), 0 0 16px var(--neon-purple);
+      animation: trailFade 1.6s ease-out forwards;
+    }
+
+    @keyframes trailFade {
+      0% { opacity: 0.8; transform: scale(1); }
+      100% { opacity: 0; transform: scale(0.2) translateY(-10px); }
     }
   </style>
 </head>
 <body>
 
+  <!-- 全螢幕框線 + 頂部指示線 -->
+  <div class="viewport-frame" aria-hidden="true"></div>
+
+  <!-- 游標軌跡粒子 -->
+  <div class="cursor-trails" id="cursor-trails" aria-hidden="true"></div>
+
   <!-- 背景層 -->
   <div class="bg-container" aria-hidden="true">
     <div class="particles"></div>
+    <div class="particles-deep"></div>
+    <div class="bokeh b1"></div>
+    <div class="bokeh b2"></div>
+    <div class="bokeh b3"></div>
+    <div class="bokeh b4"></div>
+    <div class="tech-grid"></div>
+    <div class="scanlines"></div>
+    <div class="horizon-line"></div>
     <div class="cyber-floor">
       <div class="floor-reflection"></div>
     </div>
     <div class="light-beam"></div>
+    <div class="god-ray"></div>
     <div class="ring-wrapper" id="scene-ring">
-      <div class="ring-ambient-glow"></div>
-      <div class="neon-ring"></div>
+      <div class="ring-ambient-glow" id="ring-glow"></div>
+      <div class="neon-ring" id="ring-main"></div>
       <div class="neon-ring-inner"></div>
+      <div class="hex-core">
+        <div class="hex-vert" style="top:-5px;left:50%;transform:translateX(-50%)"></div>
+        <div class="hex-vert" style="top:25%;left:-5px"></div>
+        <div class="hex-vert" style="top:25%;right:-5px"></div>
+        <div class="hex-vert" style="bottom:25%;left:-5px"></div>
+        <div class="hex-vert" style="bottom:25%;right:-5px"></div>
+        <div class="hex-vert" style="bottom:-5px;left:50%;transform:translateX(-50%)"></div>
+      </div>
+      <div class="satellite s1"></div>
+      <div class="satellite s2"></div>
+      <div class="satellite s3"></div>
+      <div class="satellite s4"></div>
     </div>
+
+    <!-- 脈衝擴散環 -->
+    <div class="data-rings">
+      <div class="dr dr1"></div>
+      <div class="dr dr2"></div>
+      <div class="dr dr3"></div>
+    </div>
+
+    <!-- 浮游幾何碎片 -->
+    <div class="geo-frag g1"></div>
+    <div class="geo-frag g2"></div>
+    <div class="geo-frag g3"></div>
+    <div class="geo-frag g4"></div>
+    <div class="geo-frag g5"></div>
+
+    <!-- 底部霧氣層 -->
+    <div class="fog-layer"></div>
   </div>
 
   <!-- 裝飾角標 -->
@@ -896,7 +1433,7 @@
       AND DRIVE REAL IMPACT.
     </p>
     <div class="action-group">
-      <a href="#" class="cta-btn">ENTER PORTFOLIO</a>
+      <a href="#" class="cta-btn">ENTER PORTFOLIO <span class="btn-arrow">→</span></a>
       <a href="#" class="cta-btn secondary" id="btn-ai-open">✦ LAUNCH AI CORE</a>
     </div>
   </main>
@@ -929,6 +1466,27 @@
       <span>PROBLEM SOLVER</span>
     </div>
   </footer>
+
+  <!-- HUD 系統狀態列 -->
+  <div class="hud-bar" aria-hidden="true">
+    <span class="hud-metric">UPLINK <i>1.2 Gbps</i></span>
+    <span class="hud-sep">//</span>
+    <span class="hud-metric">NODE <i>ACTIVE</i></span>
+    <span class="hud-sep">//</span>
+    <span class="hud-metric">LAT <i>32 ms</i></span>
+    <span class="hud-sep">//</span>
+    <span class="hud-metric">SYS.TEMP <i>47°C</i></span>
+    <span class="hud-sep">//</span>
+    <span class="hud-metric">ENCRYPT <i>AES-256</i></span>
+    <span class="hud-clock" id="hud-clock"></span>
+  </div>
+
+  <!-- 左側數據流標線 -->
+  <div class="data-stream-left" aria-hidden="true">
+    <div class="ds-line ds-l1"></div>
+    <div class="ds-line ds-l2"></div>
+    <div class="ds-line ds-l3"></div>
+  </div>
 
   <!-- AI 終端機 -->
   <div id="ai-modal" class="ai-modal" role="dialog" aria-modal="true" aria-labelledby="ai-title" hidden>
