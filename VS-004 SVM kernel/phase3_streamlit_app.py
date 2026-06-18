@@ -1,7 +1,6 @@
 import sys
 import os
 import numpy as np
-import pandas as pd
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from utils.data_generator import generate_ring_dataset
@@ -9,7 +8,6 @@ from utils.svm_utils import train_svm, make_decision_grid, compute_decision_surf
 
 import streamlit as st
 import plotly.graph_objects as go
-import plotly.express as px
 
 st.set_page_config(
     page_title="SVM Kernel Trick 3D Demo",
@@ -136,10 +134,7 @@ model, xx, yy, Z_decision, x_range, y_range = cached_train_svm_and_surface(
     X, y, kernel=kernel, C=C, gamma=gamma, degree=degree
 )
 
-Z_points = model.decision_function(X)
 support_vectors = model.support_vectors_
-sv_indices = model.support_
-sv_labels = y[sv_indices]
 
 accuracy = model.score(X, y) * 100
 

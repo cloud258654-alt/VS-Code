@@ -3,7 +3,12 @@ from sklearn.svm import SVC
 
 
 def train_svm(X, y, kernel="rbf", C=10.0, gamma=1.0, degree=3):
-    model = SVC(kernel=kernel, C=C, gamma=gamma, degree=degree)
+    params = {"kernel": kernel, "C": C}
+    if kernel != "linear":
+        params["gamma"] = gamma
+    if kernel == "poly":
+        params["degree"] = degree
+    model = SVC(**params)
     model.fit(X, y)
     return model
 
