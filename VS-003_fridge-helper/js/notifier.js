@@ -21,6 +21,7 @@ function notify(title, body) {
 }
 
 function checkAndNotify() {
+  if (typeof getFoods !== "function" || typeof calculateRemainingDays !== "function") return;
   var now = Date.now();
   if (now - NOTIFIER_LAST_CHECK < NOTIFIER_INTERVAL) return;
   NOTIFIER_LAST_CHECK = now;

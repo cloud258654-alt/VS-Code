@@ -1,8 +1,15 @@
 const STORAGE_KEY = "fridge-foods";
 
 function getFoods() {
-  const data = localStorage.getItem(STORAGE_KEY);
-  return data ? JSON.parse(data) : [];
+  var data = localStorage.getItem(STORAGE_KEY);
+  var foods = data ? JSON.parse(data) : [];
+  var migrated = false;
+  foods.forEach(function (f) {
+    if (f.unitType === undefined) { f.unitType = "x"; migrated = true; }
+    if (f.originalQuantity === undefined) { f.originalQuantity = f.quantity || 1; migrated = true; }
+  });
+  if (migrated) saveFoods(foods);
+  return foods;
 }
 
 function saveFoods(foods) {

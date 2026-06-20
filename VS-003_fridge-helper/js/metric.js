@@ -1,4 +1,5 @@
 function getMetrics() {
+  if (typeof getHistory !== "function" || typeof getFoods !== "function") return null;
   var history = getHistory();
   var foods = getFoods();
 
