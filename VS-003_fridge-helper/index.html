@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>冰箱保衛戰</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body class="min-h-screen">
+
+  <header class="bg-white/80 backdrop-blur-xl border-b border-black/5 text-[#1D1D1F] py-4 px-4 text-center text-lg font-semibold tracking-tight">
+    冰箱保衛戰
+  </header>
+
+  <main class="max-w-md mx-auto px-0 pb-24 pt-2">
+    <canvas id="food-canvas" class="w-full block"></canvas>
+  </main>
+
+  <button id="fab" class="fixed bottom-6 right-6 w-14 h-14 bg-[#1D1D1F] text-white rounded-full text-2xl shadow-lg shadow-black/10 flex items-center justify-center hover:shadow-xl hover:shadow-black/15 active:scale-95 transition-all z-40 select-none">
+    ＋
+  </button>
+
+  <div id="modal-overlay" class="hidden fixed inset-0 bg-black/30 z-50 flex items-end sm:items-center justify-center">
+    <div class="bg-white w-full max-w-md rounded-t-3xl sm:rounded-3xl p-6 shadow-xl animate-slide-up">
+      <h2 class="text-lg font-bold text-pink-500 mb-4">🛒 新增食材</h2>
+      <form id="add-food-form" class="space-y-3">
+        <div>
+          <label class="block text-sm text-gray-600 mb-1">食材名稱</label>
+          <input type="text" name="name" required class="w-full border border-pink-200 rounded-xl px-3 py-2 focus:outline-none focus:border-pink-400">
+        </div>
+        <div>
+          <label class="block text-sm text-gray-600 mb-1">類別</label>
+          <select name="category" id="category-select" required class="w-full border border-pink-200 rounded-xl px-3 py-2 focus:outline-none focus:border-pink-400"></select>
+        </div>
+        <div>
+          <label class="block text-sm text-gray-600 mb-1">存放位置</label>
+          <select name="location" id="location-select" required class="w-full border border-pink-200 rounded-xl px-3 py-2 focus:outline-none focus:border-pink-400"></select>
+          <button type="button" id="manage-locations-btn" class="text-xs text-pink-400 underline mt-1">⚙ 管理位置</button>
+        </div>
+        <div>
+          <label class="block text-sm text-gray-600 mb-1">單位</label>
+          <select name="unitType" id="unit-type-select" required class="w-full border border-pink-200 rounded-xl px-3 py-2 focus:outline-none focus:border-pink-400">
+            <option value="x">🍏 個數 (x)</option>
+            <option value="ml">🥛 液體 (ml)</option>
+            <option value="g">🥩 重量 (g)</option>
+            <option value="%">🥫 醬料 (%)</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm text-gray-600 mb-1">數量</label>
+          <div class="flex items-center gap-2">
+            <input type="number" name="quantity" min="1" value="1" required class="flex-1 border border-pink-200 rounded-xl px-3 py-2 focus:outline-none focus:border-pink-400">
+            <span id="unit-label" class="text-sm text-gray-400 shrink-0 w-6 text-center">x</span>
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm text-gray-600 mb-1">到期日</label>
+          <input type="date" name="expireDate" id="expire-date-input" class="w-full border border-pink-200 rounded-xl px-3 py-2 focus:outline-none focus:border-pink-400">
+        </div>
+        <div class="flex gap-3 pt-2">
+          <button type="button" id="modal-cancel" class="flex-1 py-2 rounded-xl border border-pink-200 text-pink-500 font-medium">取消</button>
+          <button type="submit" class="flex-1 py-2 rounded-xl bg-pink-400 text-white font-bold">加入冰箱</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="location-modal-overlay" class="hidden fixed inset-0 bg-black/30 z-[60] flex items-end sm:items-center justify-center">
+    <div class="bg-white w-full max-w-md rounded-t-3xl sm:rounded-3xl p-6 shadow-xl animate-slide-up">
+      <h2 class="text-lg font-bold text-pink-500 mb-4">⚙ 管理位置</h2>
+      <ul id="location-list" class="space-y-2 mb-4 max-h-60 overflow-y-auto"></ul>
+      <div class="flex gap-2 mb-4">
+        <input id="new-location-input" type="text" placeholder="新位置名稱" class="flex-1 border border-pink-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-pink-400">
+        <button id="add-location-btn" class="px-4 py-2 rounded-xl bg-pink-400 text-white text-sm font-bold shrink-0">新增</button>
+      </div>
+      <button id="location-modal-close" class="w-full py-2 rounded-xl border border-pink-200 text-pink-500 font-medium">關閉</button>
+    </div>
+  </div>
+
+  <script src="js/constants.js"></script>
+  <script src="js/model.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/animation.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/canvas-ui.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
