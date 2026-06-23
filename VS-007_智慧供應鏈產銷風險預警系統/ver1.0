@@ -1,0 +1,731 @@
+# AI ESG Copilot Platform
+## 智慧碳排與能耗風險預警暨 AI 決策平台
+
+Version: v1.0  
+Author: Project Manager  
+Target Customer: 台灣中小企業（已具備 ERP / MES / EMS / Power BI）
+
+---
+
+# 1. 專案願景（Vision）
+
+打造一套可快速部署於不同產業的：
+
+> AI ESG Copilot Platform
+
+整合：
+
+- ERP
+- MES
+- EMS
+- Power BI
+- ISO 文件
+- AI Agent
+- RAG Knowledge Base
+
+形成：
+
+**即時監控 → AI預警 → 法規查詢 → 減碳建議 → 稽核報告**
+
+的一站式 ESG 智慧決策平台。
+
+---
+
+# 2. 專案目標（Objectives）
+
+建立以下核心能力：
+
+## 2.1 ESG Dashboard
+
+提供：
+
+- Scope 1 碳排
+- Scope 2 碳排
+- Scope 3 碳排
+- 總碳排
+- 產品碳排強度
+- 能耗分析
+- 碳排趨勢
+- 異常預警
+
+---
+
+## 2.2 AI Agent
+
+提供：
+
+- 碳排異常分析
+- Root Cause Analysis
+- ISO 條文查詢
+- SOP 查詢
+- 減碳建議
+- 稽核報告生成
+
+---
+
+## 2.3 LINE AI Assistant
+
+主管直接詢問：
+
+例如：
+
+```text
+Notebook 為什麼碳排超標？
+
+目前碳排是多少？
+
+有哪些改善建議？
+
+預計可以減少多少碳排？
+```
+
+AI 即時回答。
+
+---
+
+# 3. 系統架構
+
+```mermaid
+flowchart LR
+
+ERP[ERP]
+MES[MES]
+EMS[EMS]
+IOT[IoT Energy Meter]
+EXCEL[Excel]
+
+ERP --> DWH
+MES --> DWH
+EMS --> DWH
+IOT --> DWH
+EXCEL --> DWH
+
+DWH[Data Warehouse]
+
+DWH --> BI
+
+BI[Power BI ESG Dashboard]
+
+ISO[ISO14064]
+ISO67[ISO14067]
+ISO50001[ISO50001]
+SOP[減碳SOP]
+AUDIT[稽核報告]
+CASE[歷史案例]
+
+ISO --> RAG
+ISO67 --> RAG
+ISO50001 --> RAG
+SOP --> RAG
+AUDIT --> RAG
+CASE --> RAG
+
+RAG[RAG Knowledge Base]
+
+DWH --> AGENT
+RAG --> AGENT
+
+AGENT[AI ESG Agent]
+
+AGENT --> LINE
+AGENT --> REPORT
+AGENT --> EMAIL
+AGENT --> CARBON
+
+CARBON[減碳建議]
+REPORT[稽核報告]
+LINE[LINE Bot]
+EMAIL[Email]
+```
+
+---
+
+# 4. 資料來源
+
+## ERP
+
+取得：
+
+- 產品資料
+- BOM
+- 訂單
+- 庫存
+- 採購資料
+
+---
+
+## MES
+
+取得：
+
+- 生產數量
+- 良率
+- 工單
+- 設備工時
+
+---
+
+## EMS
+
+取得：
+
+- 用電量
+- 天然氣
+- 蒸氣
+- 柴油
+- 水資源
+
+---
+
+## IoT 電表
+
+取得：
+
+- 即時電力
+- 設備耗能
+- 時段耗電
+
+---
+
+# 5. Power BI Dashboard
+
+## ESG Overview
+
+顯示：
+
+```text
+總碳排
+
+3250 tonCO2e
+
+▲ +8%
+
+🔴 超過目標
+```
+
+---
+
+## Scope Dashboard
+
+顯示：
+
+### Scope 1
+
+- 天然氣
+- 柴油
+- LPG
+
+---
+
+### Scope 2
+
+- 台電用電
+
+---
+
+### Scope 3
+
+- 原料
+- 運輸
+- 包裝
+- 廢棄物
+
+---
+
+## Product Carbon
+
+| Product | Carbon | Target | Status |
+|---------|--------|-------|-------|
+| PCB | 1.2 | 1.0 | 🔴 |
+| Notebook | 1.45 | 1.1 | 🔴 |
+| Server | 0.8 | 1.0 | 🟢 |
+
+---
+
+## Energy Dashboard
+
+顯示：
+
+- Electricity
+- Natural Gas
+- Steam
+- Water
+- Solar
+- Renewable Energy
+
+---
+
+# 6. 異常預警機制
+
+## Rule 1
+
+如果：
+
+```text
+Carbon > Target
+```
+
+則：
+
+```text
+RED ALERT
+```
+
+---
+
+## Rule 2
+
+如果：
+
+```text
+Electricity
+
+較去年同期
+
+增加 > 10%
+```
+
+則：
+
+```text
+Warning
+```
+
+---
+
+## Rule 3
+
+如果：
+
+```text
+Carbon Trend
+
+連續三個月上升
+```
+
+則：
+
+```text
+Critical
+```
+
+---
+
+# 7. AI ESG Agent
+
+當碳排超標：
+
+AI執行：
+
+---
+
+Step1
+
+讀取：
+
+ERP
+
+MES
+
+EMS
+
+取得：
+
+```text
+產品：
+
+Notebook
+
+產量：
+
+50,000 pcs
+
+電力：
+
+250,000 kWh
+
+天然氣：
+
+5000 m3
+```
+
+---
+
+Step2
+
+計算：
+
+```text
+Carbon
+
+1.45 kgCO2e
+
+Target
+
+1.1
+
+Over
+
+31%
+```
+
+---
+
+Step3
+
+Root Cause Analysis
+
+分析：
+
+```text
+SMT用電增加
+
++18%
+
+天然氣增加
+
++12%
+
+綠電比例下降
+
+20%
+
+↓
+
+12%
+```
+
+---
+
+Step4
+
+RAG Search
+
+查詢：
+
+- ISO14064
+- ISO14067
+- SOP
+- 稽核案例
+
+---
+
+Step5
+
+AI 建議：
+
+```text
+1.
+
+SMT待機節能
+
+減少
+
+5%
+
+2.
+
+更換空壓機
+
+減少
+
+8%
+
+3.
+
+提高綠電比例
+
+減少
+
+12%
+
+4.
+
+夜間關閉烤箱
+
+減少
+
+3%
+```
+
+---
+
+# 8. RAG Knowledge Base
+
+## International Standard
+
+建立：
+
+```text
+ISO14064-1
+
+ISO14067
+
+ISO50001
+
+GHG Protocol
+
+SBTi
+
+TCFD
+
+ISSB
+```
+
+---
+
+## Internal Documents
+
+建立：
+
+```text
+減碳SOP
+
+能源管理SOP
+
+稽核程序
+
+環境政策
+
+設備說明書
+
+歷史稽核報告
+```
+
+---
+
+## Industry Template
+
+支援：
+
+```text
+電子業
+
+食品業
+
+塑膠業
+
+金屬加工
+
+機械業
+
+紡織業
+```
+
+---
+
+# 9. LINE Bot
+
+主管：
+
+```text
+Notebook 為什麼超標？
+```
+
+AI：
+
+```text
+碳排：
+
+1.45
+
+目標：
+
+1.1
+
+超標：
+
+31%
+
+原因：
+
+SMT耗電增加
+
+天然氣增加
+
+綠電比例下降
+
+依據：
+
+ISO14064
+
+建議：
+
+設備節能
+
+綠電導入
+
+空壓機優化
+
+預估減碳：
+
+22%
+```
+
+---
+
+# 10. 稽核報告自動生成
+
+輸出：
+
+```text
+ESG Audit Report
+
+日期：
+
+2026/06/23
+
+產品：
+
+Notebook
+
+異常：
+
+碳排超標31%
+
+依據：
+
+ISO14064
+
+原因：
+
+SMT耗電增加
+
+天然氣增加
+
+改善：
+
+設備節能
+
+空壓系統優化
+
+綠電導入
+
+預估：
+
+減少22%
+
+完成期限：
+
+2026Q4
+```
+
+---
+
+# 11. 技術架構
+
+## Frontend
+
+```text
+React
+
+Next.js
+
+TypeScript
+```
+
+---
+
+## Backend
+
+```text
+Python
+
+FastAPI
+```
+
+---
+
+## Database
+
+```text
+PostgreSQL
+```
+
+---
+
+## Vector Database
+
+```text
+Qdrant
+
+or
+
+Chroma
+```
+
+---
+
+## AI
+
+```text
+OpenAI GPT
+
+Gemini
+
+Claude
+```
+
+---
+
+## Dashboard
+
+```text
+Power BI
+```
+
+---
+
+# 12. Future Roadmap
+
+Phase 1
+
+ESG Dashboard
+
+---
+
+Phase 2
+
+AI Alert
+
+---
+
+Phase 3
+
+RAG ISO Knowledge Base
+
+---
+
+Phase 4
+
+LINE AI Assistant
+
+---
+
+Phase 5
+
+Audit Copilot
+
+---
+
+Phase 6
+
+Multi Industry SaaS
+
+---
+
+最終產品：
+
+AI ESG Copilot Platform
+
+讓台灣中小企業：
+
+看得到碳排
+
+找得到原因
+
+看得懂法規
+
+做得出減碳
+
+一鍵完成稽核。
