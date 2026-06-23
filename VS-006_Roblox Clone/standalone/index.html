@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mythic Seas 神話之海</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="game-shell">
+    <section class="stage" aria-label="戰鬥區">
+      <div class="topbar">
+        <div>
+          <h1>Mythic Seas 神話之海</h1>
+          <p id="islandLine">日耀環礁</p>
+        </div>
+        <div class="save-pill" id="saveStatus">已自動存檔</div>
+      </div>
+
+      <div class="battlefield">
+        <div class="enemy-card">
+          <div class="enemy-art" id="enemyArt">
+            <span id="enemyInitial">礁</span>
+          </div>
+          <div class="enemy-info">
+            <strong id="enemyName">礁光幽靈</strong>
+            <span id="enemyLevel">Lv.1</span>
+          </div>
+          <div class="bar">
+            <div class="bar-fill enemy" id="enemyHp"></div>
+          </div>
+          <p id="enemyHpText">55 / 55</p>
+        </div>
+
+        <div class="combat-actions">
+          <button id="attackBtn" class="primary">攻擊</button>
+          <button id="coreBtn">Mythic Core</button>
+          <button id="nextEnemyBtn">更換目標</button>
+        </div>
+      </div>
+
+      <div class="log" id="log"></div>
+    </section>
+
+    <aside class="panel">
+      <section>
+        <h2>角色</h2>
+        <div class="level-row">
+          <strong id="playerLevel">Lv.1</strong>
+          <span id="coins">0 Coins</span>
+        </div>
+        <div class="bar">
+          <div class="bar-fill exp" id="expBar"></div>
+        </div>
+        <p id="expText">EXP 0 / 102</p>
+      </section>
+
+      <section>
+        <h2>屬性點 <span id="points">0</span></h2>
+        <div class="stat-grid" id="stats"></div>
+      </section>
+
+      <section>
+        <h2>任務</h2>
+        <p id="questText">可接任務：初升礁光</p>
+        <button id="questBtn">接取 / 回報任務</button>
+      </section>
+
+      <section>
+        <h2>航海圖</h2>
+        <div class="island-list" id="islands"></div>
+      </section>
+
+      <section>
+        <h2>裝備</h2>
+        <label>
+          Mythic Core
+          <select id="coreSelect"></select>
+        </label>
+        <label>
+          武器
+          <select id="weaponSelect"></select>
+        </label>
+      </section>
+    </aside>
+  </main>
+
+  <script src="./game.js"></script>
+</body>
+</html>
