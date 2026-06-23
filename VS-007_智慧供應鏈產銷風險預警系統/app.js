@@ -126,6 +126,63 @@ const optimizationData = {
     { key: "notebookIntensity", current: "1.45", peer: "1.22", rank: "P75" },
     { key: "renewableRatio", current: "20%", peer: "34%", rank: "Below median" },
     { key: "wasteRecycle", current: "64%", peer: "72%", rank: "P60" }
+  ],
+  onboarding: [
+    { key: "companyProfile", progress: 100 },
+    { key: "industrySetup", progress: 100 },
+    { key: "dataSourcesSetup", progress: 72 },
+    { key: "frameworkSelection", progress: 80 },
+    { key: "supplierScope", progress: 45 }
+  ],
+  roleHome: [
+    { key: "executive", focus: "riskAndValue", metric: "5 alerts" },
+    { key: "esg", focus: "assuranceReady", metric: "82%" },
+    { key: "facility", focus: "energyActions", metric: "4 tasks" },
+    { key: "procurement", focus: "supplierFollowup", metric: "3 overdue" }
+  ],
+  connectors: [
+    { key: "ERP", status: "connected" },
+    { key: "MES", status: "connected" },
+    { key: "EMS", status: "connected" },
+    { key: "PowerBI", status: "connected" },
+    { key: "Excel", status: "reviewing" },
+    { key: "UtilityBills", status: "pending" },
+    { key: "LINE", status: "connected" },
+    { key: "Email", status: "pending" }
+  ],
+  importSteps: ["selectSource", "uploadFile", "mapFields", "validateErrors", "finishImport"],
+  notifications: [
+    { key: "supplierLate", level: "critical" },
+    { key: "factorExpiring", level: "warning" },
+    { key: "carbonOverTarget", level: "critical" },
+    { key: "evidenceMissing", level: "warning" },
+    { key: "reportReady", level: "normal" }
+  ],
+  aiTrust: [
+    { key: "confidence", value: "78%" },
+    { key: "sourcesUsed", value: "6" },
+    { key: "missingData", value: "2" },
+    { key: "nextBestAction", value: "supplierEvidence" }
+  ],
+  mobileTasks: [
+    { key: "meterReading", value: "250,000 kWh", status: "ready" },
+    { key: "photoEvidence", value: "3 files", status: "reviewing" },
+    { key: "actionConfirm", value: "SMT standby", status: "pending" }
+  ],
+  exports: ["PDF", "Word", "Excel", "PowerBI", "XBRL", "BoardDeck"],
+  demoTour: ["dashboardTour", "scenarioTour", "supplierTour", "reportTour", "valueTour"],
+  adminSettings: [
+    { key: "usersRoles", value: "18 users" },
+    { key: "approvalFlow", value: "3 steps" },
+    { key: "retentionPolicy", value: "7 years" },
+    { key: "auditLogs", value: "1,284 events" }
+  ],
+  academy: ["ISO14064", "CBAM", "CSRD", "SBTi", "GHGProtocol", "Scope3"],
+  valueMetrics: [
+    { key: "reportHoursSaved", value: "120h" },
+    { key: "carbonFeeAvoided", value: "NTD 225,000" },
+    { key: "energySaving", value: "NTD 564,000" },
+    { key: "supplierResponse", value: "78%" }
   ]
 };
 
@@ -200,6 +257,30 @@ const dictionaries = {
     uncertaintyBadge: "估算風險",
     benchmarkTitle: "同業 Benchmark",
     benchmarkBadge: "Peer Comparison",
+    onboardingTitle: "首次導入精靈",
+    onboardingBadge: "5 步完成",
+    roleHomeTitle: "角色化首頁",
+    roleHomeBadge: "4 種角色",
+    connectorTitle: "整合市場 / Connector Hub",
+    connectorBadge: "8 個連接器",
+    importWizardTitle: "資料匯入 Wizard",
+    importWizardBadge: "欄位驗證",
+    notificationTitle: "通知中心",
+    notificationBadge: "5 則重要通知",
+    aiTrustTitle: "AI 可信度面板",
+    aiTrustBadge: "缺漏提示",
+    mobileFieldTitle: "行動版現場填報",
+    mobileFieldBadge: "現場任務",
+    exportCenterTitle: "報告輸出中心",
+    exportCenterBadge: "6 種格式",
+    demoTourTitle: "網站式產品導覽",
+    demoTourBadge: "Demo Mode",
+    adminTitle: "安全、權限、稽核設定",
+    adminBadge: "內控設定",
+    academyTitle: "學習中心 / Regulation Academy",
+    academyBadge: "知識庫",
+    valueTitle: "ROI / 商業價值頁",
+    valueBadge: "導入效益",
     totalCarbon: "總碳排",
     totalCarbonHint: "較目標 +8%，需要處理",
     scope1Hint: "天然氣、柴油、LPG",
@@ -455,6 +536,58 @@ const dictionaries = {
         current: "目前",
         peer: "同業",
         rank: "排名"
+      },
+      productUxLabels: {
+        companyProfile: "公司資料",
+        industrySetup: "產業與產品設定",
+        dataSourcesSetup: "資料來源連接",
+        frameworkSelection: "報告框架選擇",
+        supplierScope: "供應商範圍設定",
+        executive: "主管",
+        esg: "ESG 專員",
+        facility: "廠務",
+        procurement: "採購",
+        riskAndValue: "風險與商業價值",
+        assuranceReady: "確信準備度",
+        energyActions: "能源改善任務",
+        supplierFollowup: "供應商催繳",
+        connected: "已連接",
+        reviewing: "審查中",
+        pending: "待設定",
+        selectSource: "選擇資料來源",
+        uploadFile: "上傳檔案",
+        mapFields: "欄位對應",
+        validateErrors: "驗證錯誤",
+        finishImport: "完成匯入",
+        supplierLate: "供應商填報逾期",
+        factorExpiring: "排放係數即將過期",
+        carbonOverTarget: "碳排超標",
+        evidenceMissing: "佐證文件缺漏",
+        reportReady: "稽核報告可輸出",
+        confidence: "回答信心",
+        sourcesUsed: "引用來源",
+        missingData: "缺漏資料",
+        nextBestAction: "建議下一步",
+        supplierEvidence: "催繳供應商佐證",
+        meterReading: "設備讀數",
+        photoEvidence: "照片佐證",
+        actionConfirm: "改善措施確認",
+        ready: "已完成",
+        dashboardTour: "Dashboard 風險總覽",
+        scenarioTour: "Scenario 減碳模擬",
+        supplierTour: "Supplier Portal 催繳",
+        reportTour: "Disclosure 報告產出",
+        valueTour: "Value Dashboard 效益",
+        usersRoles: "使用者與角色",
+        approvalFlow: "簽核流程",
+        retentionPolicy: "資料留存",
+        auditLogs: "稽核紀錄",
+        GHGProtocol: "GHG Protocol",
+        Scope3: "Scope 3",
+        reportHoursSaved: "節省報告工時",
+        carbonFeeAvoided: "避免碳費",
+        energySaving: "節能節費",
+        supplierResponse: "供應商回覆率"
       }
     },
     agentSteps: [
@@ -588,6 +721,30 @@ const dictionaries = {
     uncertaintyBadge: "Estimation risk",
     benchmarkTitle: "Peer Benchmark",
     benchmarkBadge: "Peer Comparison",
+    onboardingTitle: "Onboarding Wizard",
+    onboardingBadge: "5-step setup",
+    roleHomeTitle: "Role-based Home",
+    roleHomeBadge: "4 roles",
+    connectorTitle: "Connector Hub",
+    connectorBadge: "8 connectors",
+    importWizardTitle: "Data Import Wizard",
+    importWizardBadge: "Field validation",
+    notificationTitle: "Notification Center",
+    notificationBadge: "5 important alerts",
+    aiTrustTitle: "AI Trust Panel",
+    aiTrustBadge: "Missing data hints",
+    mobileFieldTitle: "Mobile Field Reporting",
+    mobileFieldBadge: "Field tasks",
+    exportCenterTitle: "Report Export Center",
+    exportCenterBadge: "6 formats",
+    demoTourTitle: "Product Demo Tour",
+    demoTourBadge: "Demo Mode",
+    adminTitle: "Security, Permission, and Audit Settings",
+    adminBadge: "Control settings",
+    academyTitle: "Regulation Academy",
+    academyBadge: "Learning hub",
+    valueTitle: "ROI / Business Value Dashboard",
+    valueBadge: "Business impact",
     totalCarbon: "Total Carbon",
     totalCarbonHint: "+8% above target, action required",
     scope1Hint: "Natural gas, diesel, LPG",
@@ -843,6 +1000,58 @@ const dictionaries = {
         current: "Current",
         peer: "Peer",
         rank: "Rank"
+      },
+      productUxLabels: {
+        companyProfile: "Company profile",
+        industrySetup: "Industry and product setup",
+        dataSourcesSetup: "Data source connection",
+        frameworkSelection: "Reporting framework selection",
+        supplierScope: "Supplier scope setup",
+        executive: "Executive",
+        esg: "ESG Specialist",
+        facility: "Facility",
+        procurement: "Procurement",
+        riskAndValue: "Risk and business value",
+        assuranceReady: "Assurance readiness",
+        energyActions: "Energy action tasks",
+        supplierFollowup: "Supplier follow-up",
+        connected: "Connected",
+        reviewing: "Reviewing",
+        pending: "Pending setup",
+        selectSource: "Select source",
+        uploadFile: "Upload file",
+        mapFields: "Map fields",
+        validateErrors: "Validate errors",
+        finishImport: "Finish import",
+        supplierLate: "Supplier submission overdue",
+        factorExpiring: "Emission factor expiring soon",
+        carbonOverTarget: "Carbon over target",
+        evidenceMissing: "Evidence missing",
+        reportReady: "Audit report ready",
+        confidence: "Answer confidence",
+        sourcesUsed: "Sources used",
+        missingData: "Missing data",
+        nextBestAction: "Next best action",
+        supplierEvidence: "Follow up supplier evidence",
+        meterReading: "Meter reading",
+        photoEvidence: "Photo evidence",
+        actionConfirm: "Action confirmation",
+        ready: "Ready",
+        dashboardTour: "Dashboard risk overview",
+        scenarioTour: "Scenario reduction simulation",
+        supplierTour: "Supplier Portal follow-up",
+        reportTour: "Disclosure report output",
+        valueTour: "Value Dashboard impact",
+        usersRoles: "Users and roles",
+        approvalFlow: "Approval flow",
+        retentionPolicy: "Data retention",
+        auditLogs: "Audit logs",
+        GHGProtocol: "GHG Protocol",
+        Scope3: "Scope 3",
+        reportHoursSaved: "Report hours saved",
+        carbonFeeAvoided: "Carbon fee avoided",
+        energySaving: "Energy cost saved",
+        supplierResponse: "Supplier response rate"
       }
     },
     agentSteps: [
@@ -1388,6 +1597,71 @@ function renderBenchmark() {
   </div>`).join("");
 }
 
+function renderProductUx() {
+  const labels = t("optimization").productUxLabels;
+
+  document.querySelector("#onboardingList").innerHTML = optimizationData.onboarding.map((step, index) => `<div class="product-row-wide">
+    <div>
+      <strong>${index + 1}. ${labels[step.key]}</strong>
+      <div class="bar"><span style="width:${step.progress}%"></span></div>
+    </div>
+    <span>${t("progress")}: ${step.progress}%</span>
+  </div>`).join("");
+
+  document.querySelector("#roleHomeGrid").innerHTML = optimizationData.roleHome.map((role) => `<article class="metric-extension">
+    <strong>${labels[role.key]}</strong>
+    <p>${labels[role.focus]}</p>
+    <span class="status normal">${role.metric}</span>
+  </article>`).join("");
+
+  document.querySelector("#connectorGrid").innerHTML = optimizationData.connectors.map((connector) => `<article class="connector-card">
+    <strong>${connector.key}</strong>
+    <span class="status ${connector.status === "connected" ? "normal" : connector.status === "reviewing" ? "warning" : "critical"}">${labels[connector.status]}</span>
+  </article>`).join("");
+
+  document.querySelector("#importWizardList").innerHTML = optimizationData.importSteps.map((step, index) => `<div class="lineage-step">
+    <span>${index + 1}</span>
+    <strong>${labels[step]}</strong>
+  </div>`).join("");
+
+  document.querySelector("#notificationList").innerHTML = optimizationData.notifications.map((notice) => `<div class="alert-item ${notice.level}">
+    <strong>${labels[notice.key]}</strong>
+    <p class="muted">${t("status")}: ${t("optimization").risks[notice.level]}</p>
+  </div>`).join("");
+
+  document.querySelector("#aiTrustList").innerHTML = optimizationData.aiTrust.map((item) => `<div class="source-item">
+    <strong>${labels[item.key]}</strong>
+    <p class="muted">${labels[item.value] || item.value}</p>
+  </div>`).join("");
+
+  document.querySelector("#mobileFieldList").innerHTML = optimizationData.mobileTasks.map((task) => `<div class="mobile-task">
+    <strong>${labels[task.key]}</strong>
+    <span>${task.value}</span>
+    <span class="status ${task.status === "ready" ? "normal" : task.status === "reviewing" ? "warning" : "critical"}">${labels[task.status]}</span>
+  </div>`).join("");
+
+  document.querySelector("#exportGrid").innerHTML = optimizationData.exports.map((format) => `<button class="export-tile" type="button">${format}</button>`).join("");
+
+  document.querySelector("#demoTourList").innerHTML = optimizationData.demoTour.map((step, index) => `<div class="timeline-item">
+    <strong>${index + 1}. ${labels[step]}</strong>
+  </div>`).join("");
+
+  document.querySelector("#adminGrid").innerHTML = optimizationData.adminSettings.map((setting) => `<article class="knowledge-item">
+    <strong>${labels[setting.key]}</strong>
+    <p>${setting.value}</p>
+  </article>`).join("");
+
+  document.querySelector("#academyGrid").innerHTML = optimizationData.academy.map((topic) => `<article class="knowledge-item">
+    <strong>${labels[topic] || topic}</strong>
+    <p>${topic === "CBAM" || topic === "CSRD" ? t("complianceTitle") : t("ragTitle")}</p>
+  </article>`).join("");
+
+  document.querySelector("#valueGrid").innerHTML = optimizationData.valueMetrics.map((metric) => `<article class="metric-card">
+    <span>${labels[metric.key]}</span>
+    <strong>${metric.value}</strong>
+  </article>`).join("");
+}
+
 function addMessage(text, role = "assistant") {
   const log = document.querySelector("#chatLog");
   const message = document.createElement("div");
@@ -1442,6 +1716,7 @@ function renderAll() {
   renderUtilities();
   renderAssets();
   renderBenchmark();
+  renderProductUx();
   document.querySelector("#auditReport").textContent = t("reportText");
 }
 

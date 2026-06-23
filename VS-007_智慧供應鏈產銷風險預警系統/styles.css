@@ -389,6 +389,30 @@ canvas {
   gap: 10px;
 }
 
+.onboarding-list,
+.role-home-grid,
+.connector-grid,
+.import-wizard-list,
+.notification-list,
+.trust-list,
+.mobile-shell,
+.export-grid,
+.demo-tour-list,
+.admin-grid,
+.academy-grid,
+.value-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.role-home-grid,
+.connector-grid,
+.admin-grid,
+.academy-grid,
+.value-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .alert-item {
   border-left: 4px solid var(--amber);
 }
@@ -603,6 +627,53 @@ canvas {
   grid-template-columns: minmax(220px, 1fr) 130px;
 }
 
+.product-row-wide,
+.connector-card,
+.mobile-task {
+  display: grid;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: #fbfcfb;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+.product-row-wide {
+  grid-template-columns: minmax(220px, 1fr) 130px;
+}
+
+.connector-card {
+  min-height: 92px;
+}
+
+.mobile-shell {
+  max-width: 420px;
+  padding: 18px;
+  background: #1f2f29;
+  border-radius: 24px;
+}
+
+.mobile-task {
+  grid-template-columns: 1fr 90px 90px;
+  color: var(--ink);
+  background: #fff;
+}
+
+.export-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.export-tile {
+  min-height: 72px;
+  color: var(--teal);
+  background: #e4f2ef;
+  border: 1px solid #c7e0da;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 900;
+}
+
 #ragSearch,
 #chatInput {
   min-height: 40px;
@@ -714,6 +785,12 @@ pre {
   .role-grid,
   .framework-grid,
   .metric-extension-grid,
+  .role-home-grid,
+  .connector-grid,
+  .admin-grid,
+  .academy-grid,
+  .value-grid,
+  .export-grid,
   .lineage-flow {
     grid-template-columns: 1fr;
   }
@@ -738,6 +815,11 @@ pre {
   .asset-row,
   .uncertainty-row,
   .benchmark-row {
+    grid-template-columns: 1fr;
+  }
+
+  .product-row-wide,
+  .mobile-task {
     grid-template-columns: 1fr;
   }
 

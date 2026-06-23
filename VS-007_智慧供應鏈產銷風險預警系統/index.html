@@ -44,6 +44,15 @@
       <button class="nav-item" data-view="utilities" type="button">Utilities</button>
       <button class="nav-item" data-view="assets" type="button">Assets</button>
       <button class="nav-item" data-view="benchmark" type="button">Benchmark</button>
+      <button class="nav-item" data-view="onboarding" type="button">Onboarding</button>
+      <button class="nav-item" data-view="roleHome" type="button">Role Home</button>
+      <button class="nav-item" data-view="connectors" type="button">Connectors</button>
+      <button class="nav-item" data-view="notifications" type="button">Notifications</button>
+      <button class="nav-item" data-view="mobileField" type="button">Mobile Field</button>
+      <button class="nav-item" data-view="exportCenter" type="button">Export Center</button>
+      <button class="nav-item" data-view="admin" type="button">Admin</button>
+      <button class="nav-item" data-view="academy" type="button">Academy</button>
+      <button class="nav-item" data-view="valueDashboard" type="button">Value</button>
       <button class="nav-item" data-view="agent" type="button">AI Agent</button>
       <button class="nav-item" data-view="rag" type="button">RAG Knowledge</button>
       <button class="nav-item" data-view="line" type="button">LINE Assistant</button>
@@ -406,6 +415,123 @@
             </div>
             <div class="benchmark-list" id="benchmarkList"></div>
           </section>
+        </div>
+      </section>
+
+      <section class="view" id="onboarding">
+        <div class="panel">
+          <div class="panel-title">
+            <h2 data-i18n="onboardingTitle">首次導入精靈</h2>
+            <span class="status normal" data-i18n="onboardingBadge">5 步完成</span>
+          </div>
+          <div class="onboarding-list" id="onboardingList"></div>
+        </div>
+      </section>
+
+      <section class="view" id="roleHome">
+        <div class="panel">
+          <div class="panel-title">
+            <h2 data-i18n="roleHomeTitle">角色化首頁</h2>
+            <span class="status normal" data-i18n="roleHomeBadge">4 種角色</span>
+          </div>
+          <div class="role-home-grid" id="roleHomeGrid"></div>
+        </div>
+      </section>
+
+      <section class="view" id="connectors">
+        <div class="dashboard-grid">
+          <section class="panel">
+            <div class="panel-title">
+              <h2 data-i18n="connectorTitle">整合市場 / Connector Hub</h2>
+              <span class="status normal" data-i18n="connectorBadge">8 個連接器</span>
+            </div>
+            <div class="connector-grid" id="connectorGrid"></div>
+          </section>
+          <section class="panel">
+            <div class="panel-title">
+              <h2 data-i18n="importWizardTitle">資料匯入 Wizard</h2>
+              <span class="status warning" data-i18n="importWizardBadge">欄位驗證</span>
+            </div>
+            <div class="import-wizard-list" id="importWizardList"></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="notifications">
+        <div class="dashboard-grid">
+          <section class="panel">
+            <div class="panel-title">
+              <h2 data-i18n="notificationTitle">通知中心</h2>
+              <span class="status critical" data-i18n="notificationBadge">5 則重要通知</span>
+            </div>
+            <div class="notification-list" id="notificationList"></div>
+          </section>
+          <section class="panel">
+            <div class="panel-title">
+              <h2 data-i18n="aiTrustTitle">AI 可信度面板</h2>
+              <span class="status warning" data-i18n="aiTrustBadge">缺漏提示</span>
+            </div>
+            <div class="trust-list" id="aiTrustList"></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="mobileField">
+        <div class="panel">
+          <div class="panel-title">
+            <h2 data-i18n="mobileFieldTitle">行動版現場填報</h2>
+            <span class="status normal" data-i18n="mobileFieldBadge">現場任務</span>
+          </div>
+          <div class="mobile-shell" id="mobileFieldList"></div>
+        </div>
+      </section>
+
+      <section class="view" id="exportCenter">
+        <div class="dashboard-grid">
+          <section class="panel">
+            <div class="panel-title">
+              <h2 data-i18n="exportCenterTitle">報告輸出中心</h2>
+              <span class="status normal" data-i18n="exportCenterBadge">6 種格式</span>
+            </div>
+            <div class="export-grid" id="exportGrid"></div>
+          </section>
+          <section class="panel">
+            <div class="panel-title">
+              <h2 data-i18n="demoTourTitle">網站式產品導覽</h2>
+              <span class="status normal" data-i18n="demoTourBadge">Demo Mode</span>
+            </div>
+            <div class="demo-tour-list" id="demoTourList"></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="admin">
+        <div class="panel">
+          <div class="panel-title">
+            <h2 data-i18n="adminTitle">安全、權限、稽核設定</h2>
+            <span class="status normal" data-i18n="adminBadge">內控設定</span>
+          </div>
+          <div class="admin-grid" id="adminGrid"></div>
+        </div>
+      </section>
+
+      <section class="view" id="academy">
+        <div class="panel">
+          <div class="panel-title">
+            <h2 data-i18n="academyTitle">學習中心 / Regulation Academy</h2>
+            <span class="status normal" data-i18n="academyBadge">知識庫</span>
+          </div>
+          <div class="academy-grid" id="academyGrid"></div>
+        </div>
+      </section>
+
+      <section class="view" id="valueDashboard">
+        <div class="panel">
+          <div class="panel-title">
+            <h2 data-i18n="valueTitle">ROI / 商業價值頁</h2>
+            <span class="status normal" data-i18n="valueBadge">導入效益</span>
+          </div>
+          <div class="value-grid" id="valueGrid"></div>
         </div>
       </section>
 
