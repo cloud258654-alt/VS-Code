@@ -1,0 +1,15 @@
+<article class="feature-tile theme-dark">
+    <a class="tile-link" href="{{ link }}" aria-hidden="true" tabindex="-1">{{ link_label }}</a>
+    <div class="tile-content">
+        <h2 class="feature-title">{{ title }}</h2>
+        <p class="feature-desc">{{ description }}</p>
+    </div>
+    <div class="feature-image-wrapper">
+        <picture>
+            <source srcset="{{ image_small }}, {{ image_small_2x }} 2x" media="(max-width:734px)">
+            <source srcset="{{ image_large }}, {{ image_large_2x }} 2x" media="(min-width:0px)">
+            <img src="{{ image_large }}" alt="{{ title }}">
+        </picture>
+    </div>
+    <a class="feature-cta" href="{{ link }}">{{ cta }}</a>
+</article>

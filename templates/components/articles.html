@@ -1,0 +1,12 @@
+<section class="section section-articles" id="articles" aria-label="最新文章">
+    <div class="articles-inner">
+        <h2 class="section-title">最新文章</h2>
+        <ul class="article-list">
+            {% for post in posts %}
+                {% include "components/article-card.html" with post=post counter=forloop.counter %}
+            {% empty %}
+                <li class="empty-state">尚無文章。請從管理後台新增第一篇文章。</li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>

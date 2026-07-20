@@ -1,11 +1,86 @@
-{% extends "base.html" %}
-
-
-{% block 'content' %}
-    {% for post in posts %}
-        <h1> {{ post.title }}</h1>
-        <small> {{ post.content }} </small>
-        <hr/>
-        <h6> {{ post.slug }} | {{post.pub_date}} </h6>
-    {% endfor %}
-{% endblock 'content' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}DjangoBlog{% endblock %}</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
+            --color-bg: #000;
+            --color-text: #f5f5f7;
+            --color-text-muted: #86868b;
+            --color-link: #2997ff;
+            --color-link-hover: #0077ed;
+            --hero-height: 650px;
+            --nav-height: 44px;
+        }
+        html { font-size: 17px; -webkit-font-smoothing: antialiased; }
+        body { font-family: var(--font-system); background: var(--color-bg); color: var(--color-text); line-height: 1.47059; letter-spacing: -0.022em; }
+        a { color: var(--color-link); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        img { display: block; max-width: 100%; }
+        .nav { position: sticky; top: 0; z-index: 100; height: var(--nav-height); background: rgba(0, 0, 0, 0.8); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+        .nav-inner { max-width: 1008px; height: 100%; margin: 0 auto; padding: 0 22px; display: flex; align-items: center; justify-content: space-between; }
+        .nav-logo { color: var(--color-text); font-size: 1.2rem; font-weight: 600; letter-spacing: -0.03em; }
+        .nav-logo:hover { opacity: 0.8; text-decoration: none; }
+        .nav-links { display: flex; gap: 28px; list-style: none; }
+        .nav-links a { color: var(--color-text-muted); font-size: 0.75rem; }
+        .nav-links a:hover { color: var(--color-text); text-decoration: none; }
+        .main { width: 100%; overflow: hidden; }
+        .section { position: relative; width: 100%; }
+        .tile-wrapper { position: relative; min-height: var(--hero-height); overflow: hidden; text-align: center; }
+        .theme-dark { background: #000; color: var(--color-text); }
+        .tile-link { position: absolute; inset: 0; z-index: 3; display: block; overflow: hidden; text-indent: -9999px; }
+        .tile-content { position: relative; z-index: 2; padding: 55px 22px 0; }
+        .tile-copy-wrapper { margin-bottom: 14px; }
+        .tile-eyebrow { margin-bottom: 8px; color: #bf4800; font-size: .82rem; font-weight: 600; letter-spacing: .02em; }
+        .tile-headline { margin-bottom: 6px; font-size: clamp(2.5rem, 6vw, 3.5rem); line-height: 1.05; letter-spacing: -.04em; }
+        .tile-subheadline { max-width: 600px; margin: 0 auto; color: var(--color-text-muted); font-size: clamp(1.1rem, 2.5vw, 1.35rem); }
+        .tile-ctas { display: flex; align-items: center; justify-content: center; gap: 28px; margin-top: 18px; }
+        .button { position: relative; z-index: 4; border: 0; background: none; color: var(--color-link); font: inherit; font-size: 1.05rem; cursor: pointer; }
+        .button:hover { color: var(--color-link-hover); text-decoration: underline; }
+        .button::after, .feature-cta::after { content: " ›"; }
+        .tile-image-wrapper { position: absolute; bottom: 0; left: 50%; width: 100%; max-width: 1008px; transform: translateX(-50%); z-index: 1; }
+        .tile-image-wrapper picture { display: block; }
+        .tile-image-wrapper img { width: 100%; height: auto; }
+        .section-features { padding: 12px 12px 60px; background: #000; }
+        .features-inner, .articles-inner { max-width: 1008px; margin: 0 auto; }
+        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+        .feature-tile { position: relative; min-height: 380px; overflow: hidden; border-radius: 18px; background: #1d1d1f; transition: transform 0.3s ease; }
+        .feature-tile:hover { transform: scale(1.01); }
+        .feature-tile .tile-link { border-radius: 18px; }
+        .feature-tile .tile-content { padding: 36px 28px 0; text-align: left; }
+        .feature-title { margin-bottom: 8px; font-size: 1.35rem; }
+        .feature-desc { max-width: 90%; color: var(--color-text-muted); font-size: .88rem; }
+        .feature-cta { position: absolute; bottom: 28px; left: 28px; z-index: 3; font-size: .88rem; }
+        .feature-cta:hover { color: var(--color-link-hover); text-decoration: underline; }
+        .feature-image-wrapper { position: absolute; right: 0; bottom: 0; left: 0; height: 55%; overflow: hidden; }
+        .feature-image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+        .section-articles { padding: 80px 22px; background: #f5f5f7; color: #1d1d1f; }
+        .section-title { margin-bottom: 48px; text-align: center; font-size: 2.5rem; letter-spacing: -.03em; }
+        .article-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; list-style: none; }
+        .article-card { overflow: hidden; border-radius: 18px; background: #fff; transition: box-shadow 0.3s; }
+        .article-card:hover { box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1); }
+        .article-thumb { aspect-ratio: 16 / 9; background: #e8e8ed; overflow: hidden; }
+        .article-thumb img { width: 100%; height: 100%; object-fit: cover; }
+        .article-body { padding: 24px 28px 28px; }
+        .article-date { margin-bottom: 8px; color: #86868b; font-size: .75rem; }
+        .article-title { margin-bottom: 8px; font-size: 1.2rem; }
+        .article-excerpt { color: #6e6e73; font-size: .88rem; }
+        .empty-state { grid-column: 1 / -1; padding: 48px; color: #6e6e73; text-align: center; }
+        .footer { background: #f5f5f7; border-top: 1px solid #d2d2d7; padding: 20px 22px; color: #6e6e73; text-align: center; font-size: 0.75rem; }
+        @media (max-width: 734px) { .nav-links { display: none; } .features-grid, .article-list { grid-template-columns: 1fr; } :root { --hero-height: 580px; } .tile-ctas { flex-direction: column; gap: 12px; } }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    {% include "components/header.html" %}
+    <main class="main">
+        {% block content %}{% endblock %}
+    </main>
+    {% include "components/footer.html" %}
+</body>
+</html>

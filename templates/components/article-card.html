@@ -1,0 +1,28 @@
+<li class="article-card">
+    <div class="article-thumb">
+        <picture>
+            {% if counter == 2 %}
+                <source srcset="https://www.apple.com/v/home/images/macbook-air-m5/a/hero_macbook_air_m5__eb1idggd120y_small.jpg, https://www.apple.com/v/home/images/macbook-air-m5/a/hero_macbook_air_m5__eb1idggd120y_small_2x.jpg 2x" media="(max-width:734px)">
+                <source srcset="https://www.apple.com/v/home/images/macbook-air-m5/a/hero_macbook_air_m5__eb1idggd120y_large.jpg, https://www.apple.com/v/home/images/macbook-air-m5/a/hero_macbook_air_m5__eb1idggd120y_large_2x.jpg 2x" media="(min-width:0px)">
+                <img src="https://www.apple.com/v/home/images/macbook-air-m5/a/hero_macbook_air_m5__eb1idggd120y_large.jpg" alt="{{ post.title }}">
+            {% elif counter == 3 %}
+                <source srcset="https://www.apple.com/v/home/images/ipad-air-m4/a/promo_ipad_air_m4__bgcv7t286k8y_small.jpg, https://www.apple.com/v/home/images/ipad-air-m4/a/promo_ipad_air_m4__bgcv7t286k8y_small_2x.jpg 2x" media="(max-width:734px)">
+                <source srcset="https://www.apple.com/v/home/images/ipad-air-m4/a/promo_ipad_air_m4__bgcv7t286k8y_large.jpg, https://www.apple.com/v/home/images/ipad-air-m4/a/promo_ipad_air_m4__bgcv7t286k8y_large_2x.jpg 2x" media="(min-width:0px)">
+                <img src="https://www.apple.com/v/home/images/ipad-air-m4/a/promo_ipad_air_m4__bgcv7t286k8y_large.jpg" alt="{{ post.title }}">
+            {% elif counter == 4 %}
+                <source srcset="https://www.apple.com/v/home/images/iphone-17/a/hero_iphone_17__ekga3xh1n5aq_small.jpg, https://www.apple.com/v/home/images/iphone-17/a/hero_iphone_17__ekga3xh1n5aq_small_2x.jpg 2x" media="(max-width:734px)">
+                <source srcset="https://www.apple.com/v/home/images/iphone-17/a/hero_iphone_17__ekga3xh1n5aq_large.jpg, https://www.apple.com/v/home/images/iphone-17/a/hero_iphone_17__ekga3xh1n5aq_large_2x.jpg 2x" media="(min-width:0px)">
+                <img src="https://www.apple.com/v/home/images/iphone-17/a/hero_iphone_17__ekga3xh1n5aq_large.jpg" alt="{{ post.title }}">
+            {% else %}
+                <source srcset="https://www.apple.com/v/iphone-17-pro/g/images/overview/welcome/hero__bsveixlwbms2_small.jpg, https://www.apple.com/v/iphone-17-pro/g/images/overview/welcome/hero__bsveixlwbms2_small_2x.jpg 2x" media="(max-width:734px)">
+                <source srcset="https://www.apple.com/v/iphone-17-pro/g/images/overview/welcome/hero__bsveixlwbms2_large.jpg, https://www.apple.com/v/iphone-17-pro/g/images/overview/welcome/hero__bsveixlwbms2_large_2x.jpg 2x" media="(min-width:0px)">
+                <img src="https://www.apple.com/v/iphone-17-pro/g/images/overview/welcome/hero__bsveixlwbms2_large.jpg" alt="{{ post.title }}">
+            {% endif %}
+        </picture>
+    </div>
+    <div class="article-body">
+        <p class="article-date">{{ post.pub_date|date:"Y 年 n 月 j 日" }}</p>
+        <h3 class="article-title">{{ post.title }}</h3>
+        <p class="article-excerpt">{{ post.content|truncatechars:120 }}</p>
+    </div>
+</li>
