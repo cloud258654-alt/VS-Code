@@ -5,10 +5,10 @@ echo "=========================================="
 echo "Setting up Python Virtual Environment..."
 echo "=========================================="
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 # Check if python3 is installed
-if ! command -v python3 &> /dev/null; then
+if ! command -v python3 >/dev/null 2>&1; then
     echo "[ERROR] python3 is not installed or not in PATH."
     exit 1
 fi
