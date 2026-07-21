@@ -16,7 +16,18 @@ fi
 # Create virtual environment
 if [ ! -d "${SCRIPT_DIR}/.venv" ]; then
     echo "Creating virtual environment in .venv..."
-    python3 -m venv "${SCRIPT_DIR}/.venv"
+    if ! python3 -m venv "${SCRIPT_DIR}/.venv" 2>/dev/null; then
+        echo "[INFO] System missing python3-venv package, falling back to --without-pip..."
+        python3 -m venv --without-pip "${SCRIPT_DIR}/.venv"
+        echo "[INFO] Downloading get-pip.py to install pip..."
+        if command -v curl >/dev/null 2>&1; then
+            curl -sSL https://bootstrap.pypa.io/get-pip.py -o "${SCRIPT_DIR}/get-pip.py"
+        elif command -v wget >/dev/null 2>&1; then
+            wget -qO "${SCRIPT_DIR}/get-pip.py" https://bootstrap.pypa.io/get-pip.py
+        fi
+        "${SCRIPT_DIR}/.venv/bin/python" "${SCRIPT_DIR}/get-pip.py"
+        rm -f "${SCRIPT_DIR}/get-pip.py"
+    fi
     echo "Virtual environment created successfully."
 else
     echo ".venv already exists. Skipping creation."
